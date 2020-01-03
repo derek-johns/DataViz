@@ -82,26 +82,34 @@ def visualize_type():
 
     # set the label based on keys of counter
     # order does not matter so we can use counter.keys()
+    labels = tuple(counter.keys())
 
     # set exactly where the labels hit the x-axis
+    xlocations = np.array(range(len(labels))) + 0.5
 
     # width of each bar that will be plotted
+    width = 0.5
 
     # assign data to a bar plot
+    plt.bar(xlocations, counter.values(), width=width)
 
     # assign labels and tick locatin to x-axis
+    plt.xticks(xlocations + width / 2, labels, rotation=90)
 
     # give some more room so the x-axis labels aren't cut off
+    plt.subplots_adjust(bottom=0.45)
 
     # make overall graph/figure larger
+    plt.rcParams['figure.figsize'] = 12, 8
 
     # save graph
+    plt.savefig("Type.png")
 
     # close plot
-
+    plt.clf()
 
 def main():
-    visualize_days()
+    visualize_type()
 
 if __name__ == "__main__":
     main()
